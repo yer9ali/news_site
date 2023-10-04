@@ -15,6 +15,7 @@ from django.db.models import Index
 from django.db.models.fields.files import ImageField
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 from tinymce.models import HTMLField
 
 from news_site.core.models.base import AbstractDateTime
@@ -31,7 +32,7 @@ class Article(AbstractDateTime):
     """
 
     uid = UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
-    title = CharField(max_length=250, verbose_name="Заголовок")
+    title = CharField(max_length=250, verbose_name=_("Заголовок"))
     description = TextField(verbose_name="Описание")
 
     content = HTMLField()

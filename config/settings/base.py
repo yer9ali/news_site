@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 APPS_DIR = BASE_DIR / "news_site"
 env = environ.Env()
 
-READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
+READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=True)
 if READ_DOT_ENV_FILE:
     # OS environment variables take precedence over variables from .env
     env.read_env(str(BASE_DIR / ".env"))
@@ -67,8 +67,10 @@ DJANGO_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # "django.contrib.humanize", # Handy template tags
+    "jazzmin",
     "django.contrib.admin",
     "django.forms",
+    "daterangefilter"
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -81,7 +83,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "news_site.users",
-    # Your stuff: custom apps go here
+    "news_site.core",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

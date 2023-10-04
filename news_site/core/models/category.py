@@ -15,9 +15,9 @@ from news_site.users.models import User
 class Category(AbstractDateTime):
     """Модель категории новостных материалов"""
 
-    slug = SlugField(max_length=250, verbose_name="Слаг", unique=True, blank=True)
-
     title = CharField(max_length=250, verbose_name="Заголовок")
+
+    slug = SlugField(max_length=250, verbose_name="Слаг", unique=True, blank=True)
     seo_title = CharField(max_length=250, verbose_name="СЕО заголовок")
     description = TextField(verbose_name="Описание", blank=True)
 
