@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block meta_data %}
+  <title>{{ tags.tag_name }}</title>
+  <meta name="description" content="{{ tags.tag_desc }}">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+{% endblock meta_data %}
+{% block content %}
+  <main>
+    <section class="catpageSection">
+      <div class="container">
+        <h1 class="page_title">{{ tags.tag_title }}</h1>
+        <div class="catpageSection_wrap">
+          <div class="catpageSection_block">
+            <div class="news_list" id="tags_list">
+            </div>
+            <div class="showmore" id="showmore_tags">Больше новостей</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+{% endblock %}

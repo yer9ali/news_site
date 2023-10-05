@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block meta_data %}
+  <title>Новости </title>
+  <meta property="og:title" content="{{ category.title }}">
+  <meta property="og:description" content="{{ category.desc }}">
+
+  <meta name="robots" content="index, follow, max-image-preview:large">
+{% endblock meta_data %}
+{% block content %}
+  <main>
+    <section class="catpageSection">
+      <div class="container">
+        <h1 class="page_title">{{ category.title }}</h1>
+        <div class="catpageSection_wrap">
+          <div class="catpageSection_block">
+            <div class="news_list" id="category_list">
+            </div>
+            <div class="showmore" id="showmore_category">Больше новостей</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+{% endblock %}

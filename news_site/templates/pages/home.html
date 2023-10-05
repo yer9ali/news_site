@@ -1,3 +1,62 @@
 {% extends "base.html" %}
+{% load static %}
 
+{% block content %}
+  <main>
+    <section class="mainSection">
+      <div class="container">
+        <div class="mainSection_wrap">
+          <div class="mainSection_left">
+            {% for news in fixed_news %}
+              <div class="card">
+                <a href="{% url 'news_detail' news.news.alias %}">
+                  <div class="card_img">
+                    <img src="{% get_media_prefix %}{{ news.news.news_image }}" alt="card">
+                  </div>
+                  <div class="card_content">
+                    <div class="card_info">
+                      <div class="card_time">
+                        {{ news.news.published_date }}
+                      </div>
+                      <div class="card_category">
+                        {{ news.news.categories.all.0.title }}
+                      </div>
+                    </div>
+                    <div class="card_title">
+                      {{ news.news.page_title }}
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="mainSection_right">
+            <div class="lastBG"></div>
+            <div class="lastNews">
 
+              <div class="lastNews_title">
+                <span>Последние новости</span>
+                <a href="{% url 'articles' %}">Все</a>
+              </div>
+              <div class="lastNews_list" id="lastNews_list">
+
+              </div>
+              <a href="{% url 'articles' %}" class="allNews_btn">Все новости</a>
+              <div class="showmore" id="showmore_lastNews">ещё +3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% for key, value in category_dict.items %}
+    {% endfor %}
+    <section class="bannerSection">
+      <div class="container">
+        <div class="banner_block">
+
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock %}

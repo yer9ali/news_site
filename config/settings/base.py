@@ -310,3 +310,4 @@ SOCIALACCOUNT_FORMS = {"signup": "news_site.users.forms.UserSocialSignupForm"}
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+CACHE_TTL = 60 * 10

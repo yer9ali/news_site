@@ -1,136 +1,192 @@
-
 {% load static i18n %}<!DOCTYPE html>
+{% load static %}
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>
-      {% block title %}
-      News Site
-    {% endblock title %}
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-        content="News Site" />
-  <meta name="author"
-        content="Yergali" />
-  <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" />
-  {% block css %}
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
-          integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer" />
-<!-- Your stuff: Third-party CSS libraries go here -->
-<!-- This file stores project-specific CSS -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-  
-  <link href="{% static 'css/project.css' %}" rel="stylesheet" />
+  <link rel="icon" href="">
+  <link rel="shortcut icon" href="" type="image/x-icon">
+  <link href="" rel="stylesheet">
 
-
-{% endblock css %}
-<!-- Le javascript
-    ================================================== -->
-{# Placed at the top of the document so pages load faster with defer #}
-{% block javascript %}
-
-
-<!-- Bootstrap JS -->
-<script defer
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
-        integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"></script>
-<!-- Your stuff: Third-party javascript libraries go here -->
-
-
-<!-- place project specific Javascript in this file -->
-
-  
-  <script defer src="{% static 'js/project.js' %}"></script>
-
-
-{% endblock javascript %}
 </head>
 <body>
-  <div class="mb-1">
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-      <div class="container-fluid">
-        <button class="navbar-toggler navbar-toggler-right"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="{% url 'home' %}">News Site</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'home' %}">Home <span class="visually-hidden">(current)</span></a>
+<div class="wrapper">
+  <header>
+    <div class="headerTop">
+      <div class="container">
+        <div class="search_block" id="search_block">
+          <form action="" class="header-search">
+            <button class="icon_btn" type="submit">
+              <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M14.1667 14.1667L11.3236 11.3185L14.1667 14.1667ZM12.8991 7.51206C12.8991 8.9408 12.3316 10.311 11.3213 11.3213C10.311 12.3316 8.9408 12.8991 7.51206 12.8991C6.08332 12.8991 4.7131 12.3316 3.70283 11.3213C2.69256 10.311 2.125 8.9408 2.125 7.51206C2.125 6.08332 2.69256 4.7131 3.70283 3.70283C4.7131 2.69256 6.08332 2.125 7.51206 2.125C8.9408 2.125 10.311 2.69256 11.3213 3.70283C12.3316 4.7131 12.8991 6.08332 12.8991 7.51206V7.51206Z"
+                  stroke="#333333" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <input type="text" name="q" placeholder="Поиск новостей">
+            <button class="text_btn" type="submit">Найти</button>
+          </form>
+
+
+          <div class="search_close" id="search_close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M1 1L12 12M23 23L12 12M12 12L1 23L23 1" stroke="black"/>
+            </svg>
+          </div>
+        </div>
+        <div class="headerTop_wrap">
+          <div class="headerTop_logo">
+            <a href="{% url 'home' %}">
+
+            </a>
+          </div>
+          <ul class="headerTop_nav">
+            <li class="dropdown">
+                                <span class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="4" viewBox="0 0 16 4"
+                                         fill="none">
+                                        <path
+                                          d="M2.216 3.312C1.864 3.312 1.56 3.184 1.304 2.928C1.048 2.672 0.92 2.368 0.92 2.016C0.92 1.648 1.048 1.344 1.304 1.104C1.56 0.848 1.864 0.72 2.216 0.72C2.584 0.72 2.888 0.848 3.128 1.104C3.384 1.344 3.512 1.648 3.512 2.016C3.512 2.368 3.384 2.672 3.128 2.928C2.888 3.184 2.584 3.312 2.216 3.312ZM8.39788 3.312C8.04588 3.312 7.74188 3.184 7.48588 2.928C7.22988 2.672 7.10188 2.368 7.10188 2.016C7.10188 1.648 7.22988 1.344 7.48588 1.104C7.74188 0.848 8.04588 0.72 8.39788 0.72C8.76588 0.72 9.06988 0.848 9.30988 1.104C9.56588 1.344 9.69388 1.648 9.69388 2.016C9.69388 2.368 9.56588 2.672 9.30988 2.928C9.06988 3.184 8.76588 3.312 8.39788 3.312ZM14.5798 3.312C14.2278 3.312 13.9238 3.184 13.6678 2.928C13.4118 2.672 13.2838 2.368 13.2838 2.016C13.2838 1.648 13.4118 1.344 13.6678 1.104C13.9238 0.848 14.2278 0.72 14.5798 0.72C14.9478 0.72 15.2518 0.848 15.4918 1.104C15.7478 1.344 15.8758 1.648 15.8758 2.016C15.8758 2.368 15.7478 2.672 15.4918 2.928C15.2518 3.184 14.9478 3.312 14.5798 3.312Z"
+                                          fill="black"/>
+                                    </svg>
+                                </span>
+              <ul class="dropdown-content">
+                {% for category in categories %}
+                  {% if forloop.counter >= 7 %}
+                    <li>
+                      <a href="{% url 'category' category.category.slug %}">
+                        {{ category.category.title }}
+                      </a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'about' %}">About</a>
-            </li>
-            {% if request.user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link"
-                   href="{% url 'users:detail' request.user.username %}">{% translate "My Profile" %}</a>
-              </li>
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
-              </li>
-            {% else %}
-              {% if ACCOUNT_ALLOW_REGISTRATION %}
-                <li class="nav-item">
-                  {# URL provided by django-allauth/account/urls.py #}
-                  <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% translate "Sign Up" %}</a>
-                </li>
-              {% endif %}
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% translate "Sign In" %}</a>
-              </li>
-            {% endif %}
           </ul>
+          <div class="headerTop_right">
+            <div class="headerTop_search">
+              <div class="searchBtn" id="searchBtn"></div>
+            </div>
+            <div class="headerTop_menu">
+              <div class="menuBtn" id="menuBtn">
+              </div>
+              <div class="headerTop_menuContent" id="headerTop_menuContent">
+                <div class="headerTop_menuClose" id="headerTop_menuClose">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M1 1L12 12M23 23L12 12M12 12L1 23L23 1" stroke="black"/>
+                  </svg>
+                </div>
+                <div class="headerTop_menuList">
+
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </nav>
-  </div>
-  <div class="container">
-    {% if messages %}
-      {% for message in messages %}
-        <div class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-          {{ message }}
-          <button type="button"
-                  class="btn-close"
-                  data-bs-dismiss="alert"
-                  aria-label="Close"></button>
+    </div>
+    <div class="headerBottom">
+      <div class="container">
+        <div class="headerBottom_wrap">
+          <div class="headerBottom_top">
+            <div class="title">ПОПУЛЯРНЫЕ ТЕМЫ:</div>
+            <hr>
+          </div>
+          <div class="headerBottom_bottom">
+            <div class="headerBottom_hot">
+              {% for tag in hot_tags %}
+                <a href="{% url 'tag'  tag.tags__tag_slug %}">{{ tag.tags__tag_title }}</a>
+              {% endfor %}
+            </div>
+            <div class="headerBottom_feedback">
+
+            </div>
+          </div>
         </div>
-      {% endfor %}
-    {% endif %}
-    {% block content %}
-      <p>Use this document as a way to quick start any new project.</p>
-    {% endblock content %}
+      </div>
+    </div>
+  </header>
+
+  {% block content %}
+  {% endblock %}
+
+  <footer>
+    <div class="footerTop">
+      <div class="container">
+        <div class="footerTop_wrap">
+          <div class="footerTop_logo">
+            <a href="#"></a>
+          </div>
+          <div class="footerTop_social">
+            <a href="https://t.me/prosud_kz">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <g clip-path="url(#clip0_963_2729)">
+                  <path
+                    d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                    fill="url(#paint0_linear_963_2729)"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M4.5266 9.89446C7.4418 8.62435 9.38573 7.78702 10.3584 7.38246C13.1355 6.22737 13.7125 6.02672 14.0887 6.02009C14.1714 6.01863 14.3563 6.03913 14.4762 6.13635C14.5773 6.21844 14.6052 6.32934 14.6185 6.40717C14.6318 6.485 14.6484 6.6623 14.6352 6.80083C14.4847 8.38207 13.8335 12.2193 13.5022 13.9903C13.3621 14.7397 13.0861 14.991 12.8188 15.0155C12.2381 15.069 11.7972 14.6318 11.2347 14.2631C10.3546 13.6861 9.85735 13.327 9.00303 12.764C8.01572 12.1134 8.65575 11.7558 9.21842 11.1714C9.36567 11.0184 11.9243 8.69115 11.9739 8.48002C11.98 8.45362 11.9858 8.3552 11.9273 8.30322C11.8689 8.25125 11.7826 8.26903 11.7203 8.28316C11.632 8.30319 10.226 9.23252 7.50222 11.0711C7.10313 11.3452 6.74164 11.4787 6.41776 11.4717C6.06071 11.464 5.37388 11.2698 4.8633 11.1039C4.23705 10.9003 3.73932 10.7927 3.78266 10.4469C3.80524 10.2669 4.05321 10.0827 4.5266 9.89446Z"
+                        fill="white"/>
+                </g>
+                <defs>
+                  <linearGradient id="paint0_linear_963_2729" x1="10" y1="0" x2="10" y2="19.8517"
+                                  gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#2AABEE"/>
+                    <stop offset="1" stop-color="#229ED9"/>
+                  </linearGradient>
+                  <clipPath id="clip0_963_2729">
+                    <rect width="20" height="20" fill="white"/>
+                  </clipPath>
+                </defs>
+              </svg>
+            </a>
+            <a href="">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_963_2726)">
+                  <path
+                    d="M20 10C20 4.47715 15.5229 0 10 0C4.47715 0 0 4.47715 0 10C0 14.9912 3.65684 19.1283 8.4375 19.8785V12.8906H5.89844V10H8.4375V7.79688C8.4375 5.29063 9.93047 3.90625 12.2146 3.90625C13.3084 3.90625 14.4531 4.10156 14.4531 4.10156V6.5625H13.1922C11.95 6.5625 11.5625 7.3334 11.5625 8.125V10H14.3359L13.8926 12.8906H11.5625V19.8785C16.3432 19.1283 20 14.9912 20 10Z"
+                    fill="#1877F2"/>
+                  <path
+                    d="M13.8926 12.8906L14.3359 10H11.5625V8.125C11.5625 7.33418 11.95 6.5625 13.1922 6.5625H14.4531V4.10156C14.4531 4.10156 13.3088 3.90625 12.2146 3.90625C9.93047 3.90625 8.4375 5.29063 8.4375 7.79688V10H5.89844V12.8906H8.4375V19.8785C9.47287 20.0405 10.5271 20.0405 11.5625 19.8785V12.8906H13.8926Z"
+                    fill="white"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_963_2726">
+                    <rect width="20" height="20" fill="white"/>
+                  </clipPath>
+                </defs>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footerBody">
+      <div class="container">
+        <div class="footerBody_wrap">
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">
+
+      </div>
+    </div>
+  </footer>
+  <div class="up_button" id="toTop">
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="18" viewBox="0 0 12 18" fill="none">
+      <path
+        d="M11.6574 5.96219L10.2399 7.37309L6.98495 4.10285L6.97126 17.7079L4.97126 17.7059L4.98491 4.13806L1.75465 7.35324L0.34375 5.93572L6.01383 0.292114L11.6574 5.96219Z"
+        fill="white"/>
+    </svg>
   </div>
-  <!-- /container -->
-  {% block modal %}
-  {% endblock modal %}
-  {% block inline_javascript %}
-    {% comment %}
-    Script tags with only code, no src (defer by default). To run
-    with a "defer" so that you run inline code:
-    <script>
-      window.addEventListener('DOMContentLoaded', () => {
-        /* Run whatever you want */
-      });
-    </script>
-    {% endcomment %}
-  {% endblock inline_javascript %}
+</div>
+
+<script src=""></script>
+<script async src="https://cse.google.com/cse.js?cx=d71fb098171c9422a">
+</script>
 </body>
 </html>

@@ -5,8 +5,16 @@ from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 
+from news_site.core.views.home_view import HomeView
+
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
+    path('', HomeView.as_view(), name='home'),
+
+    path('tag/<str:slug>/', TagView.as_view(), name='tag'),
+    path('category/<str:slug>/', CategoryView.as_view(), name='category'),
+
+    path('articles/', TemplateView.as_view(), name='articles'),
+
     path("about/", TemplateView.as_view(template_name="pages/about.html"), name="about"),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
