@@ -15,9 +15,11 @@ class HomeView(TemplateView, CustomCacheMixin):
         context = super().get_context_data(**kwargs)
         pinned_news = get_pinned_news_with_category()
 
-        context.update({
-            "pinned_news": pinned_news,
-        })
+        context.update(
+            {
+                "pinned_news": pinned_news,
+            }
+        )
         return context
 
     def get(self, request, *args, **kwargs):
@@ -46,9 +48,11 @@ class HomeView(TemplateView, CustomCacheMixin):
         template = loader.get_template(self.template_name)
         cache_key = self.home_cache_key()
 
-        content = template.render({
-            "pinned_news": pinned_news,
-        })
+        content = template.render(
+            {
+                "pinned_news": pinned_news,
+            }
+        )
 
         response = HttpResponse(content, status=200)
         self.set_cache_by_key(cache_key, response)

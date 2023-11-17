@@ -4,7 +4,6 @@ from news_site.core.const import CACHE_TTL
 
 
 class CustomCacheMixin:
-
     def home_cache_key(self):
         return f"home_key"
 

@@ -4,12 +4,12 @@ from django.template import loader
 from django.views.generic import DetailView
 from loguru import logger
 
-from news_site.core.cache import CustomCache
+from news_site.core.cache import CustomCacheMixin
 from news_site.core.models import Tag
 from news_site.core.queries import get_news_tag_by_id, get_news_tag_count_by_id
 
 
-class TagsDetailView(DetailView, CustomCache):
+class TagsDetailView(DetailView, CustomCacheMixin):
     model = Tag
     template_name = "pages/tag.html"
 
@@ -46,7 +46,6 @@ class TagsDetailView(DetailView, CustomCache):
         tag = get_object_or_404(Tag, tag_slug=tag_slug)
         all_tag_news = get_news_tag_by_id(tag.id)
         news_tag_count = get_news_tag_count_by_id(tag.id)
-
 
         template = loader.get_template(self.template_name)
 

@@ -3,9 +3,7 @@ from news_site.core.models.article import PinnedArticle, Article
 
 
 def get_pinned_news_with_category():
-    return PinnedArticle.objects.select_related("article").prefetch_related(
-        "article__categories"
-    )[:8]
+    return PinnedArticle.objects.select_related("article").prefetch_related("article__categories")[:8]
 
 
 def get_categories():
@@ -21,8 +19,13 @@ def get_news_by_uid(uid):
 
 
 def get_like_news(news_pk, news_category):
-    return Article.objects.exclude(pk=news_pk).get_published().prefetch_related("categories").filter(
-        categories__in=str(news_category)).get_published()[:6]
+    return (
+        Article.objects.exclude(pk=news_pk)
+        .get_published()
+        .prefetch_related("categories")
+        .filter(categories__in=str(news_category))
+        .get_published()[:6]
+    )
 
 
 def get_news_tag_by_id(tag_id):
@@ -50,8 +53,7 @@ def get_news_category_count_by_id(category_id):
 
 
 def get_last_news():
-    return Article.objects.prefetch_related("categories").only("alias", "title",
-                                                               "published_date").get_published()[:20]
+    return Article.objects.prefetch_related("categories").only("alias", "title", "published_date").get_published()[:20]
 
 
 def get_news_count_with_category():

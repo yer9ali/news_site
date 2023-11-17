@@ -5,8 +5,12 @@ from loguru import logger
 
 from news_site.core.cache import CustomCacheMixin
 from news_site.core.models import Category
-from news_site.core.queries import get_category_by_slug, get_subcategory_by_id, get_news_category_by_id, \
-    get_news_category_count_by_id
+from news_site.core.queries import (
+    get_category_by_slug,
+    get_subcategory_by_id,
+    get_news_category_by_id,
+    get_news_category_count_by_id,
+)
 
 
 class CategoryView(DetailView, CustomCacheMixin):

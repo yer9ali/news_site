@@ -9,7 +9,7 @@ from news_site.core.models import Category, Tag, Article
 class CategoryAdmin(admin.ModelAdmin):
     fieldsets = [
         (
-            'Создать категорию',
+            "Создать категорию",
             {
                 "fields": [
                     "title",
@@ -23,22 +23,24 @@ class CategoryAdmin(admin.ModelAdmin):
         ),
     ]
 
-    list_display = ['title', 'created_by']
+    list_display = ["title", "created_by"]
 
     prepopulated_fields = {"slug": ("title",)}
 
-    list_filter = ['created_by', ]
+    list_filter = [
+        "created_by",
+    ]
 
     search_fields = ["title"]
 
-    autocomplete_fields = ('parent_category',)
+    autocomplete_fields = ("parent_category",)
 
 
 @admin.register(Tag)
 class TagsAdmin(admin.ModelAdmin):
     fieldsets = [
         (
-            'Создать тег',
+            "Создать тег",
             {
                 "fields": [
                     "title",
@@ -53,7 +55,7 @@ class TagsAdmin(admin.ModelAdmin):
 
     search_fields = ["title"]
 
-    list_display = ['title', 'created_by']
+    list_display = ["title", "created_by"]
 
     prepopulated_fields = {"slug": ("title",)}
 
@@ -62,7 +64,7 @@ class TagsAdmin(admin.ModelAdmin):
 class ArticleAdmin(admin.ModelAdmin):
     fieldsets = [
         (
-            _('Создать новость'),
+            _("Создать новость"),
             {
                 "fields": [
                     "title",
@@ -79,7 +81,10 @@ class ArticleAdmin(admin.ModelAdmin):
             },
         ),
     ]
-    list_display = ("title", "created_by", )
+    list_display = (
+        "title",
+        "created_by",
+    )
 
     search_fields = ["page_title"]
 
